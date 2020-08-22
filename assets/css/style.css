@@ -42,7 +42,7 @@ body {
 .inner-calc {
   align-items: flex-end;
   display: flex;
-  height: 40vh;
+  height: 40%;
 }
 
 .her {
@@ -55,10 +55,10 @@ body {
 }
 
 .lol {
-  align-items: center;
+  align-items: flex-end;
   display: flex !important;
   flex-direction: row;
-  height: 60vh;
+  /* height: 60%; */
 }
 
 .calculator__numbers {
@@ -80,7 +80,7 @@ body {
 
 .burger-line {
   width: 50px;
-  background-color: black;
+  /* background-color: black; */
   margin-top: 17px;
   margin-bottom: 0;
 }
@@ -120,8 +120,9 @@ body {
   font-size: 20px;
   font-family: sans-serif;
 }
+
 #body {
-  background-color: #2d3436;
+  background-color: rgb(210, 218, 226);
   font-family: sans-serif;
   height: 100vh;
 }
@@ -139,9 +140,6 @@ body {
 
 .header__text {
   font-size: 50px;
-  color: #b2bec3;
-  /* margin-top: 400px;
-  margin-left: 350px; */
   display: flex;
   justify-content: center;
 }
@@ -155,7 +153,6 @@ body {
 #wh,
 #bl {
   font-size: 40px;
-  /* margin-left: 350px; */
   display: flex;
   justify-content: center;
   align-items: center;

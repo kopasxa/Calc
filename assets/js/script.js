@@ -1,33 +1,33 @@
 /* ---- Обьявление переменных ---- */
 
-let input = document.getElementById("input");
-let button = document.querySelectorAll("#number");
-let result = document.querySelector(".result");
-let c = document.getElementById("c");
-let del = document.getElementById("del");
-let mainInput = document.querySelector(".main__input");
-let animate = "headShake";
-let animateC = "fadeOut";
-let animateDel = "pulse";
-let animateRes = "fadeIn";
-let wh = document.getElementById("w");
-let bl = document.getElementById("b");
-let hr = document.querySelectorAll(".herz");
-let calc = document.querySelector(".all");
-let body = document.querySelector("body");
-let burgerLine = document.querySelectorAll(".burger-line");
-let burgerBody = document.querySelector("#body");
-let color, calcBg, colorText, allColors, colorButton;
-
-let itemsArray = localStorage.getItem("colors") ? JSON.parse(localStorage.getItem("colors")) : [];
-
-if (itemsArray == []) 
-  defaultTheme();
+let input      = document.getElementById("input"),
+    button     = document.querySelectorAll("#number"),
+    result     = document.querySelector(".result"),
+    c          = document.getElementById("c"),
+    del        = document.getElementById("del"),
+    mainInput  = document.querySelector(".main__input"),
+    animate    = "headShake",
+    animateC   = "fadeOut",
+    animateDel = "pulse",
+    animateRes = "fadeIn",
+    wh         = document.getElementById("w"),
+    bl         = document.getElementById("b"),
+    hr         = document.querySelectorAll(".herz"),
+    calc       = document.querySelector(".all"),
+    body       = document.querySelector("body"),
+    burgerLine = document.querySelectorAll(".burger-line"),
+    burgerBody = document.querySelector("#body"),
+    textTheme  = document.querySelector(".header__text"),
+    color, calcBg, colorText, allColors, colorButton, colorTextTheme,
+    itemsArray = localStorage.getItem("colors") ? JSON.parse(localStorage.getItem("colors")) : [];
 
 /* ---- Хрен пойми шо тут написано ---- */
 
 localStorage.setItem("colors", JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem("colors"));
+
+if (itemsArray == []) 
+  defaultTheme();
 
 /* ---- Иницилизация анимаций ---- */
 
@@ -36,9 +36,10 @@ new WOW().init();
 /* ---- Вспоминает тему которая была активирована ---- */
 
 calc.style.cssText = itemsArray[1];
-input.style.cssText = itemsArray[2];
+input.style.cssText = textTheme.style.cssText = itemsArray[2];
 burgerBody.style.cssText = itemsArray[3];
 del.style.cssText = c.style.cssText = itemsArray[3];
+body.style.cssText = itemsArray[1];
 
 [].forEach.call(button, function (el) {
   el.style.cssText = itemsArray[3];
@@ -78,16 +79,13 @@ result.onclick = function (e) {
     input.value == "1+1" ||
     input.value == "0+0"
   ) {
-    result = "Какой ты умный....)";
+    result = "Ещё не вырос, иди учись )";;
     input.value = result;
   } else {
     result = eval(input.value);
 
     if (result == "Infinity") {
       result = "На ноль делить нельзя, учи математику (";
-    }
-    if (input.value == "2+2") {
-      result = "Ещё не вырос, иди учись )";
     }
     if (result == "NaN" || result == "undefined") {
       result == "Мммм... Что-то сдесь не так)";
@@ -126,10 +124,11 @@ del.onclick = function (e) {
 function defaultTheme () {
   clearStorage();
   color = "background-color: #d2dae2;";
-  calcBg = "background-color: #ffffff;";
+  calcBg = "background-color: #ffffff !important;";
   colorText = "color: #0b1016;";
   colorButton = "background-color: #0b1016;";
   allColors = "background-color: #d2dae2; color: #0b1016;";
+  colorTextTheme = colorText;
   changeColorAll();
 }
 
@@ -144,10 +143,11 @@ wh.onchange = function (e) {
 bl.onchange = function (e) {
   clearStorage();
   color = "background-color: #293238;";
-  calcBg = "background-color: #38444c;";
+  calcBg = "background-color: #38444c !important;";
   colorText = "color: #f0f2f3;";
   colorButton = "background-color: #f0f2f3;";
   allColors = "background-color: #293238; color: #f0f2f3;";
+  colorTextTheme = "color: #b2bec3;";
   changeColorAll();
 };
 
@@ -165,13 +165,15 @@ function changeColorAll() {
   itemsArray[1] = calcBg;
   itemsArray[2] = colorText;
   itemsArray[3] = allColors;
+  itemsArray[4] = colorTextTheme;
   localStorage.setItem("colors", JSON.stringify(itemsArray));
   changeColor();
 }
 
 function changeColor() {
-  calc.style.cssText = body.style.cssText = itemsArray[1] = calcBg;
-  input.style.cssText = itemsArray[2] = colorText;
+  calc.style.cssText = itemsArray[1] = calcBg;
+  body.style.cssText = itemsArray[1] = calcBg;
+  input.style.cssText = textTheme.style.cssText = itemsArray[2] = colorText;
   burgerBody.style.cssText = itemsArray[3] = allColors;
   del.style.cssText = c.style.cssText = itemsArray[3] = allColors;
 
